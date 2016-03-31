@@ -53,6 +53,7 @@ function filtirirajVulgarneBesede(vhod) {
 }
 
 $(document).ready(function() {
+  $("#vsebina").jrumble();
   var klepetApp = new Klepet(socket);
 
   socket.on('vzdevekSpremembaOdgovor', function(rezultat) {
@@ -98,6 +99,15 @@ $(document).ready(function() {
     $('#seznam-uporabnikov').empty();
     for (var i=0; i < uporabniki.length; i++) {
       $('#seznam-uporabnikov').append(divElementEnostavniTekst(uporabniki[i]));
+    }
+  });
+  
+  socket.on('dregljaj', function(rezultat) {
+    if(rezultat.dregljaj) {
+      $("#vsebina").trigger("startRumble");
+      setTimeout(function() {
+        $("#vsebina").trigger("stopRumble");
+      }, 1500);
     }
   });
 
