@@ -81,7 +81,7 @@ $(document).ready(function() {
     var novElement = divElementEnostavniTekst(sporocilo.besedilo);
     $('#sporocila').append(novElement);
   });
-  
+  //la
   socket.on('kanali', function(kanali) {
     $('#seznam-kanalov').empty();
 
